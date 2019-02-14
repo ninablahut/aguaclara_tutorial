@@ -6,7 +6,7 @@
 3. For the remaining code, highlight it with your cursor and use `Hydrogen: Run`. What is the difference between the three?
 
 ```python
-from aguaclara.play import *
+from aide_design.play import*
 
 xArray = u.Quantity(np.arange(0.1, 0.5, 0.01), u.m)
 
@@ -30,60 +30,41 @@ plt.show()
 These questions are meant to test what you've learned from the Python Basics tutorial. If you need help answering a question, refer there first and use other online resources before seeking a Subteam Lead or RA. Be sure to run all your code with Hydrogen. When you code, make sure your using proper [variable naming](https://github.com/AguaClara/aide_design/wiki/Variable-Naming) and [coding standards](https://github.com/AguaClara/aide_design/wiki/Standards)
 
 1. Write a conditional statement with 3 conditions: when x is 10, when x is 1, and when x is anything other than 1 or 10. For each condition, have your code print what the value is or isn't.
-```python
-x=0
-if(x==10):
-    print('x is 10.')
-elif(x==1):
-    print('x is 1.')
-else:
-    print('x is not 1 or 10.')
 
-```
+<!--- Fill you answer here. --->
+
+
 
 
 2. Write a `for` loop that takes a variable with an initial value of 0, and adds the current index to the previous value of that variable (i.e. you variable should grow in size every iteration). Perform the iteration 20 times, and have the final value be printed at the end.
 
-```python
-x=0
-for i in range(20):
-    x = i+x
+<!--- Fill you answer here. --->
 
-print(x)
-```
+
+
+
+
+
+
+
 
 3. Using the NumPy package and `unit_registry`, calculate the value of sin(4) meters, and use the sigfig function from the unit unit_registry module in aide_design to get your answer to 2 sig-figs. *(Hint: You will need to import these packages. Remember how to do that?)*
-```python
-from aide_design.play import*
-u.default_format = '.2f'
-x=u.Quantity(np.sin(4), u.m)
-print(ut.sig(x,2))
-```
+
+<!--- Fill you answer here. --->
+
 
 
 4. Create a `list` of length 5, and verify the length of your list. Once you've done that, turn your `list` into an `array` and apply units of meters to it. After that, create a 5x5 `array`, extract the middle row and middle column. Verify the size of your 2D `array` and apply units of liters to it.
-```python
-myList = [0, 1, 2, 3, 4]
-print(len(myList))
 
-from aide_design.play import*
-
-myArray = np.array(myList)
-myArray = myArray*u.m
-
-my2DArray = np.array([[1 ,2, 3, 4, 5], [4, 5, 6, 7 ,7], [7, 8, 9, 7, 7],[5, 5, 4, 7, 7],[7, 2, 2, 2, 7]])
-
-middleRow=my2DArray[2,:]
-print(middleRow)
-middleCol=my2DArray[:,2]
-print(middleCol)
-
-print(np.size(my2DArray))
+<!--- Fill you answer here. --->
 
 
-myArrayUnits = u.Quantity(myArray, u.L)
 
-```
+
+
+
+
+
 
 5.  One of the most famous equations for a particle diffusing through a liquid at low Reynolds Number is the Stokes-Einstein Equation where k<sub>B</sub> is the Boltzmann constant, T is the temperature in Kelvin, eta is the dynamic viscosity in kg/(m*s), and r is the particle radius. Write a function that takes a temperature in Kelvin, a particle radius in meters, and a viscosity of water to calculate the diffusion coefficient D.
 
@@ -94,50 +75,17 @@ myArrayUnits = u.Quantity(myArray, u.L)
 $$ D = \frac{k_BT}{6\pi\eta r} $$
 
 ```python
-
 from scipy.constants import Boltzmann as kB_sc # I've imported the unitless value for kB from SciPy
-import math as m
+
 kB = kB_sc * u.joule / u.kelvin # I've given kB units for you in J/K; you can use the kB variable to give you Boltzmann's constant with units
-from aide_design.play import*
-def diff_coef(temp, eta, r):
-  #temp is tempearture in kelvin, r is particle radius in m, eta is viscosity of water
-  temp = temp * u.kelvin
-  r = r * u.m
-  eta = eta * (u.kg/(u.m*u.s))
-  return ((kB*temp/(6*m.pi*eta*r)).to_base_units())
 
-
-print(ut.sig(diff_coef(400, 5, 7),4))
+# Write your code here
 
 ```
 
 6. You have a pipe with a radius of 0.2 m with water flowing in it at 2 m<sup>3</sup>/s. You want to see how the Reynolds Number changes as viscosity changes due to a change in temperature from 0 to 200<sup>o</sup>C. Create a plot of Reynolds Number against Temperature in Kelvin to show a relationship. Make sure your plot has a title, labeled axes, and axes grid. You can use functions from `physchem` like `pc.re_pipe` and `pc.viscosity_kinematic`. *(Hint: Make an array of temperatures to input into the `pc.viscosity_kinematic` function)*. Make sure to save you plot to your images folder in your personal repository, and display it below using `plt.show()` and a relative file path to the image.
 
-
-```python
-
-import matplotlib.pyplot as plt
-from aide_design.play import*
-
-tempsArray = u.Quantity(np.arange(0,201,1), u.degC)
-ReArray=np.zeros(len(tempsArray))
-
-for j in range (0,len(ReArray)):
-  ReArray[j]=pc.re_pipe(2*u.m**3/u.s, .2*u.m, pc.viscosity_kinematic(tempsArray[j]))
-
-
-plt.plot(tempsArray, ReArray)
-plt.xlabel('Temperature (Celsius)')
-plt.ylabel('Reynolds Number')
-plt.title('Reynolds Number vs Temperature')
-plt.minorticks_on()
-plt.grid(which = 'major')
-plt.grid(which = 'minor')
-plt.xlim(0,200)
-plt.show()
-
-```
-<img src="https://github.com/ninablahut/aguaclara_tutorial/blob/master/images/Screen%20Shot%202019-02-14%20at%204.48.09%20PM.png">
+<!--- Fill you answer here. --->
 
 
 # GitHub Basics
